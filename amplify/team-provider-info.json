@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-structuralbalance-dev-173823-authRole",
+      "UnauthRoleArn": "arn:aws:iam::992382779911:role/amplify-structuralbalance-dev-173823-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::992382779911:role/amplify-structuralbalance-dev-173823-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-structuralbalance-dev-173823-deployment",
+      "UnauthRoleName": "amplify-structuralbalance-dev-173823-unauthRole",
+      "StackName": "amplify-structuralbalance-dev-173823",
+      "StackId": "arn:aws:cloudformation:us-east-2:992382779911:stack/amplify-structuralbalance-dev-173823/500e9fd0-cc5b-11ee-b3c3-02e50ebe92a7",
+      "AmplifyAppId": "dj5hgt4lzen7q"
+    },
+    "categories": {
+      "auth": {
+        "structuralbalance12715ec8": {}
+      },
+      "api": {
+        "structuralbalance": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+type ReferenceLifts @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  liftId: Int!
+  liftName: String!
+  liftLoad: Int!
+}
+ 
