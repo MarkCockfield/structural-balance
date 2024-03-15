@@ -14,10 +14,7 @@ export default function Root() {
   return (
     <>
       <div id="sidebar">
-        <Link to="/">
-          <img src="src/assets/HighEndLaunchLogo.svg" />
-        </Link>
-
+      <img src="../src/assets/HighEndLaunchLogo.svg"/>
         <h1>Structural Balance</h1>
         <div>
         <Link to="referencelifts">
