@@ -1,43 +1,65 @@
-import { 
-  createBrowserRouter, 
-  RouterProvider, 
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Amplify } from "aws-amplify";
-
-import { generateClient } from "aws-amplify/api";
-import { listReferenceLifts } from "././graphql/queries";
-
-const client = generateClient();
 
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import config from "./amplifyconfiguration.json";
 Amplify.configure(config);
 
-import Root, {
-  loader as rootLoader,
-} from "./routes/root";
+import Root from "./routes/root";
+
+import ListRefLifts, { loader as refLiftLoader } from "./routes/listRefLifts";
+import EditRefLifts, {
+  loader as editLiftLoader,
+  action as editLiftAction,
+} from "./routes/editRefLift";
+
+import AddRefLifts, {
+  loader as addLiftLoader,
+  action as addLiftAction,
+} from "./routes/addRefLift";
+
+import { action as destroyAction } from "./routes/destroy";
 
 import Index from "./routes/index";
 import ErrorPage from "./error-page";
-import EditReferenceLift from "./routes/edit"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    loader: rootLoader,
     children: [
       {
         errorElement: <ErrorPage />,
         children: [
           { index: true, element: <Index /> },
           {
-            path: "referencelifts/:referenceliftId/edit",
-            element: <EditReferenceLift />,
-            loader: rootLoader,
+            path: "referencelifts",
+            element: <ListRefLifts />,
+            id: "refLiftList",
+            loader: refLiftLoader,
+            children: [
+              {
+                path: ":referenceLiftId/edit",
+                element: <EditRefLifts />,
+                loader: editLiftLoader,
+                action: editLiftAction,
+              },
+              {
+                path: "add",
+                element: <AddRefLifts />,
+                loader: addLiftLoader,
+                action: addLiftAction,
+              },
+              {
+                path: ":referenceLiftId/edit/destroy",
+                action: destroyAction,
+                errorElement: <div>Oops! There was an error.</div>,
+            
+              }
+            ],
           },
         ],
       },
@@ -49,11 +71,7 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <Authenticator>
-          <RouterProvider router={router} />
-  
-{/*       {({ signOut, user }) => (
-        <RouterProvider router={router} />
-      )}
- */}    </Authenticator>
+      <RouterProvider router={router} />
+    </Authenticator>
   );
 }
