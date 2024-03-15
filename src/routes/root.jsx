@@ -6,15 +6,13 @@ import {
 
 import { signOut } from "aws-amplify/auth";
 
-//import { ButtLink } from "../components/buttonLink";
-
 export default function Root() {
   let location = useLocation();
   console.log("Root: ", location);
   return (
     <>
       <div id="sidebar">
-      <img src="../src/assets/HighEndLaunchLogo.svg"/>
+      <img src="/public/HighEndLaunchLogo.svg"/>
         <h1>Structural Balance</h1>
         <div>
         <Link to="referencelifts">
