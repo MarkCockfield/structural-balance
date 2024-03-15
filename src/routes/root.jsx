@@ -12,7 +12,7 @@ export default function Root() {
   return (
     <>
       <div id="sidebar">
-      <img src="/public/HighEndLaunchLogo.svg"/>
+      <img src="./HighEndLaunchLogo.svg"/>
         <h1>Structural Balance</h1>
         <div>
         <Link to="referencelifts">
