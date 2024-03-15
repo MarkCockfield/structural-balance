@@ -1,6 +1,48 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateBalancedProgram = /* GraphQL */ `
+  subscription OnCreateBalancedProgram(
+    $filter: ModelSubscriptionBalancedProgramFilterInput
+  ) {
+    onCreateBalancedProgram(filter: $filter) {
+      id
+      progStartDate
+      progLifts
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateBalancedProgram = /* GraphQL */ `
+  subscription OnUpdateBalancedProgram(
+    $filter: ModelSubscriptionBalancedProgramFilterInput
+  ) {
+    onUpdateBalancedProgram(filter: $filter) {
+      id
+      progStartDate
+      progLifts
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteBalancedProgram = /* GraphQL */ `
+  subscription OnDeleteBalancedProgram(
+    $filter: ModelSubscriptionBalancedProgramFilterInput
+  ) {
+    onDeleteBalancedProgram(filter: $filter) {
+      id
+      progStartDate
+      progLifts
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const onCreateReferenceLifts = /* GraphQL */ `
   subscription OnCreateReferenceLifts(
     $filter: ModelSubscriptionReferenceLiftsFilterInput

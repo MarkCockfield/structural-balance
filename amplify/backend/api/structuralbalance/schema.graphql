@@ -1,7 +1,12 @@
+type BalancedProgram @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  progStartDate: AWSDate!
+  progLifts: AWSJSON!
+}
+
 type ReferenceLifts @model @auth(rules: [{allow: public}]) {
   id: ID!
   liftId: Int!
   liftName: String!
   liftLoad: Int!
-}
- 
+} 
