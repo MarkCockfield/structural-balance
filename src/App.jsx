@@ -7,9 +7,10 @@ import "@aws-amplify/ui-react/styles.css";
 import config from "./amplifyconfiguration.json";
 Amplify.configure(config);
 
-import Root from "./routes/root";
+import Root, { loader as refLiftLoader } from "./routes/root";
 
-import ListRefLifts, { loader as refLiftLoader } from "./routes/listRefLifts";
+import ListRefLifts from "./routes/listRefLifts";
+
 import EditRefLifts, {
   loader as editLiftLoader,
   action as editLiftAction,
@@ -20,6 +21,14 @@ import AddRefLifts, {
   action as addLiftAction,
 } from "./routes/addRefLift";
 
+import MasterLift, {
+  action as masterLiftAction,
+} from "./routes/masterLift";
+
+import ListBalLifts, {
+  loader as balLiftLoader,
+} from "./routes/listBalLifts";
+
 import { action as destroyAction } from "./routes/destroy";
 
 import Index from "./routes/index";
@@ -29,6 +38,8 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    id: "appRoot",
+    loader: refLiftLoader,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -38,8 +49,6 @@ const router = createBrowserRouter([
           {
             path: "referencelifts",
             element: <ListRefLifts />,
-            id: "refLiftList",
-            loader: refLiftLoader,
             children: [
               {
                 path: ":referenceLiftId/edit",
@@ -61,12 +70,31 @@ const router = createBrowserRouter([
               }
             ],
           },
+          {
+            path: "masterlift",
+            element: <MasterLift />,
+            action: masterLiftAction,
+            children: [
+              {
+                path: ":liftId/:liftLoad/balancedLifts",
+                element: <ListBalLifts />,
+                loader: balLiftLoader,
+              },
+/*                {
+                path: ":referenceLiftId/edit/destroy",
+                action: destroyAction,
+                errorElement: <div>Oops! There was an error.</div>,
+            
+              }
+ */             ],
+            },
+            ],
+            },
         ],
       },
     ],
 
-  },
-]);
+);
 
 export default function App() {
   return (

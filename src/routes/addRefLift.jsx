@@ -35,7 +35,7 @@ export async function action({ request, params }) {
 }
 
 export default function AddReferenceLift() {
-  const { referenceLiftData } = useRouteLoaderData("refLiftList");
+  const { referenceLiftData } = useRouteLoaderData("appRoot");
   const navigate = useNavigate();
 
   const refLiftItems = referenceLiftData.data.listReferenceLifts.items;
